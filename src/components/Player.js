@@ -1,0 +1,41 @@
+import {
+    faAngleLeft,
+    faAngleRight,
+    faPlay,
+    faVolumeLow,
+} from '@fortawesome/free-solid-svg-icons';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import React from 'react';
+
+function Player() {
+    return (
+        <div className='player'>
+            <div className='timeControl'>
+                <p className='timeStart'>Time Start</p>
+                <input
+                    type='range'
+                    min='1'
+                    max='100'
+                    value='50'
+                    class='timeSlider'
+                />
+                <p className='timeEnd'>Time End</p>
+            </div>
+            <div className='playControl'>
+                <FontAwesomeIcon className='skipBack' icon={faAngleLeft} />
+                <FontAwesomeIcon className='Play' icon={faPlay} />
+                <FontAwesomeIcon className='skipForward' icon={faAngleRight} />
+                <FontAwesomeIcon icon={faVolumeLow} />
+                <input
+                    type='range'
+                    min='1'
+                    max='100'
+                    value='50'
+                    class='volumeSlider'
+                />
+            </div>
+        </div>
+    );
+}
+
+export default Player;
