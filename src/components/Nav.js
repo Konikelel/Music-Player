@@ -8,8 +8,10 @@ function Nav() {
             <nav>
                 <h1 className='title'>Waves</h1>
                 <button className='button'>
-                    <p>Library</p>
-                    <FontAwesomeIcon className='music' icon={faMusic} />
+                    <div className='buttonContainer'>
+                        <p>Library</p>
+                        <FontAwesomeIcon className='music' icon={faMusic} />
+                    </div>
                 </button>
             </nav>
         </div>
