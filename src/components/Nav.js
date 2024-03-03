@@ -1,3 +1,5 @@
+import { faMusic } from '@fortawesome/free-solid-svg-icons';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import React from 'react';
 
 function Nav() {
@@ -7,6 +9,7 @@ function Nav() {
                 <h1 className='title'>Waves</h1>
                 <button className='button'>
                     <p>Library</p>
+                    <FontAwesomeIcon icon={faMusic} />
                 </button>
             </nav>
         </div>
