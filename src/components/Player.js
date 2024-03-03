@@ -25,7 +25,7 @@ function Player() {
                 <FontAwesomeIcon className='skipBack' icon={faAngleLeft} />
                 <FontAwesomeIcon className='play' icon={faPlay} />
                 <FontAwesomeIcon className='skipForward' icon={faAngleRight} />
-                <FontAwesomeIcon icon={faVolumeLow} />
+                <FontAwesomeIcon className='volume' icon={faVolumeLow} />
                 <input
                     type='range'
                     min='1'
