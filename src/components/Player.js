@@ -23,7 +23,7 @@ function Player() {
             </div>
             <div className='playControl'>
                 <FontAwesomeIcon className='skipBack' icon={faAngleLeft} />
-                <FontAwesomeIcon className='Play' icon={faPlay} />
+                <FontAwesomeIcon className='play' icon={faPlay} />
                 <FontAwesomeIcon className='skipForward' icon={faAngleRight} />
                 <FontAwesomeIcon icon={faVolumeLow} />
                 <input

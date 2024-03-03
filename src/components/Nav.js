@@ -9,7 +9,7 @@ function Nav() {
                 <h1 className='title'>Waves</h1>
                 <button className='button'>
                     <p>Library</p>
-                    <FontAwesomeIcon icon={faMusic} />
+                    <FontAwesomeIcon className='music' icon={faMusic} />
                 </button>
             </nav>
         </div>
