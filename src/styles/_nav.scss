@@ -1,0 +1,28 @@
+nav {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    min-height: 10vh;
+
+    h1 {
+        font-size: 1.25rem;
+    }
+
+    p {
+        font-size: 0.9rem;
+    }
+
+    button {
+        padding: 0.313rem;
+        border-radius: 14px;
+        border: 2px solid black;
+
+        .buttonContainer {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin: 0.313rem 1rem;
+            width: 4rem;
+        }
+    }
+}

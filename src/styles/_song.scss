@@ -1,0 +1,19 @@
+.song {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    min-height: 60vh;
+
+    .picture {
+        padding: 0.25rem;
+    }
+
+    .title {
+        padding: 3rem 1rem 1rem 1rem;
+    }
+
+    .author {
+        padding: 0.25rem;
+    }
+}
