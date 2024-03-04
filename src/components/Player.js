@@ -11,7 +11,7 @@ function Player() {
     return (
         <div className='player'>
             <div className='timeControl'>
-                <p className='timeStart'>Time Start</p>
+                <p className='timeStart'>0:00</p>
                 <input
                     type='range'
                     min='1'
@@ -19,7 +19,7 @@ function Player() {
                     value='50'
                     class='timeSlider'
                 />
-                <p className='timeEnd'>Time End</p>
+                <p className='timeEnd'>2:17</p>
             </div>
             <div className='playControl'>
                 <FontAwesomeIcon className='skipBack' icon={faAngleLeft} />
