@@ -6,14 +6,21 @@
     min-height: 60vh;
 
     .picture {
+        width: 25%;
         padding: 0.25rem;
+        border-radius: 50%;
     }
 
     .title {
         padding: 3rem 1rem 1rem 1rem;
+        font-size: 1.5rem;
+        color: rgb(51, 51, 51);
     }
 
     .author {
         padding: 0.25rem;
+        font-size: 1rem;
+        color: rgb(100, 100, 100);
+        font-weight: 400;
     }
 }
