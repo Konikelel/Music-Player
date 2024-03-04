@@ -6,8 +6,12 @@ import {
 } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import React from 'react';
+import { useDispatch } from 'react-redux';
+import { back, forward } from '../store/songsSlice';
 
 function Player() {
+    const dispatch = useDispatch();
+
     return (
         <div className='player'>
             <div className='timeControl'>
@@ -22,9 +26,17 @@ function Player() {
                 <p className='timeEnd'>2:17</p>
             </div>
             <div className='playControl'>
-                <FontAwesomeIcon className='skipBack' icon={faAngleLeft} />
+                <FontAwesomeIcon
+                    onClick={() => dispatch(back())}
+                    className='skipBack'
+                    icon={faAngleLeft}
+                />
                 <FontAwesomeIcon className='play' icon={faPlay} />
-                <FontAwesomeIcon className='skipForward' icon={faAngleRight} />
+                <FontAwesomeIcon
+                    onClick={() => dispatch(forward())}
+                    className='skipForward'
+                    icon={faAngleRight}
+                />
                 <FontAwesomeIcon className='volume' icon={faVolumeLow} />
                 <input
                     type='range'
