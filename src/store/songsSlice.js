@@ -2,8 +2,6 @@ import { createSlice } from '@reduxjs/toolkit';
 import data from '../data';
 
 const updateCurrentSong = (state, index) => {
-    console.log(index, JSON.stringify(state.data));
-    console.log(index, state.position);
     state.data[state.position].active = false;
     state.data[index].active = true;
 
@@ -33,10 +31,14 @@ export const songsSlice = createSlice({
         },
     },
     selectors: {
-        selectCurrent: (state) => state.current,
+        selectCurrent: (state) => state.songs.current,
         selectSongs: (state) => state.data,
     },
 });
 
 export const { forward, back } = songsSlice.actions;
+
+export const selectCurrent = (state) => state.songs.current;
+export const selectSongs = (state) => state.songs.data;
+
 export default songsSlice.reducer;
