@@ -3,9 +3,13 @@ import React from 'react';
 function Song() {
     return (
         <div className='song'>
-            <p className='picture'>Picture</p>
-            <h2 className='title'>Title</h2>
-            <h3 className='author'>Author</h3>
+            <img
+                src='/assets/covers/CanaryForest.jpg'
+                alt='Song Cover'
+                className='picture'
+            />
+            <h2 className='title'>Beaver Creek</h2>
+            <h3 className='author'>Aso, Middle School, Aviino</h3>
         </div>
     );
 }
