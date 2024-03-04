@@ -4,11 +4,19 @@
     justify-content: space-between;
     align-items: center;
     min-height: 20vh;
+    margin: auto;
+    width: 50%;
 
     .timeControl {
         display: flex;
-        justify-content: center;
+        justify-content: space-between;
         align-items: center;
+        width: 100%;
+
+        input {
+            width: 100%;
+            padding: 1rem 0rem;
+        }
 
         p {
             padding: 1rem;
@@ -17,10 +25,14 @@
 
     .playControl {
         font-size: 2rem;
-        width: 40%;
         display: flex;
-        justify-content: space-between;
+        justify-content: space-evenly;
         align-items: center;
+        width: 100%;
+
+        input {
+            padding: 1rem 0rem;
+        }
 
         .volume {
             font-size: 1.5rem;
@@ -29,5 +41,6 @@
 
     .svg-inline--fa {
         padding: 1rem;
+        cursor: pointer;
     }
 }
