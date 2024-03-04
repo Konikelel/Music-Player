@@ -1,15 +1,15 @@
 import React from 'react';
+import { useSelector } from 'react-redux';
+import { selectCurrent } from '../store/songsSlice';
 
 function Song() {
+    const current = useSelector(selectCurrent);
+
     return (
         <div className='song'>
-            <img
-                src='/assets/covers/CanaryForest.jpg'
-                alt='Song Cover'
-                className='picture'
-            />
-            <h2 className='title'>Beaver Creek</h2>
-            <h3 className='author'>Aso, Middle School, Aviino</h3>
+            <img src={current.cover} alt={current.title} className='picture' />
+            <h2 className='title'>{current.title}</h2>
+            <h3 className='author'>{current.author}</h3>
         </div>
     );
 }
