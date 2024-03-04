@@ -17,7 +17,7 @@ function Player() {
                     min='1'
                     max='100'
                     value='50'
-                    class='timeSlider'
+                    className='timeSlider'
                 />
                 <p className='timeEnd'>2:17</p>
             </div>
@@ -31,7 +31,7 @@ function Player() {
                     min='1'
                     max='100'
                     value='50'
-                    class='volumeSlider'
+                    className='volumeSlider'
                 />
             </div>
         </div>
