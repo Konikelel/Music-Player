@@ -16,6 +16,7 @@
         input {
             width: 100%;
             padding: 1rem 0rem;
+            cursor: pointer;
         }
 
         p {
@@ -26,9 +27,9 @@
     .playControl {
         font-size: 2rem;
         display: flex;
-        justify-content: space-evenly;
+        justify-content: space-between;
         align-items: center;
-        width: 100%;
+        width: 80%;
 
         input {
             padding: 1rem 0rem;
