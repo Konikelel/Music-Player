@@ -54,6 +54,7 @@ function Player() {
                         current: e.target.currentTime,
                     })
                 }
+                onEnded={(e) => handleSkip(forward)}
             />
             <div className='timeControl'>
                 <p className='timeStart'>0:00</p>
@@ -63,6 +64,7 @@ function Player() {
                     max={timeData.end}
                     value={timeData.current}
                     className='timeSlider'
+                    onClick={(e) => console.log(e)}
                 />
                 <p className='timeEnd'>{timeFormatter(timeData.end)}</p>
             </div>
