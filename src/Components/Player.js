@@ -19,6 +19,7 @@ function Player() {
     const currentSong = useSelector(selectCurrent);
     const [isPlaying, setIsPlaying] = useState(false);
     const [timeData, setTimeData] = useState({ current: 0, end: 0 });
+    const [showVolumeSlider, setShowVolumeSlider] = useState(false);
 
     const handlePlay = async () => {
         if (!isPlaying) {
@@ -84,13 +85,18 @@ function Player() {
                     className='skipForward'
                     icon={faAngleRight}
                 />
-                <FontAwesomeIcon className='volume' icon={faVolumeLow} />
+                <FontAwesomeIcon
+                    onClick={() => setShowVolumeSlider(!showVolumeSlider)}
+                    className='volume'
+                    icon={faVolumeLow}
+                />
                 <input
                     type='range'
                     min='1'
                     max='100'
                     value='50'
                     className='volumeSlider'
+                    style={{ display: showVolumeSlider ? 'block' : 'none' }}
                 />
             </div>
         </div>
