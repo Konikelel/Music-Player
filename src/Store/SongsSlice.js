@@ -1,5 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit';
-import data from '../data';
+import data from '../Data';
 
 const updateCurrentSong = (state, index) => {
     state.data[state.position].active = false;
