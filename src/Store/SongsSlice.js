@@ -33,10 +33,6 @@ export const songsSlice = createSlice({
             updateCurrentSong(state, action.payload.index);
         },
     },
-    selectors: {
-        selectCurrent: (state) => state.songs.current,
-        selectSongs: (state) => state.data,
-    },
 });
 
 export const { forward, back, setCurrent } = songsSlice.actions;
