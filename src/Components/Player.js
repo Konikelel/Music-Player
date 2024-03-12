@@ -66,6 +66,9 @@ function Player() {
                     value={timeData.current}
                     className='timeSlider'
                     onClick={(e) => console.log(e)}
+                    style={{
+                        background: `linear-gradient(to right, ${currentSong.color[0]},${currentSong.color[1]})`,
+                    }}
                 />
                 <p className='timeEnd'>{timeFormatter(timeData.end)}</p>
             </div>
