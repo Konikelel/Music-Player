@@ -29,6 +29,9 @@ export const songsSlice = createSlice({
                 0 < state.position ? state.position - 1 : state.data.length - 1
             );
         },
+        setCurrent: (state, action) => {
+            updateCurrentSong(state, action.payload.index);
+        },
     },
     selectors: {
         selectCurrent: (state) => state.songs.current,
@@ -36,7 +39,7 @@ export const songsSlice = createSlice({
     },
 });
 
-export const { forward, back } = songsSlice.actions;
+export const { forward, back, setCurrent } = songsSlice.actions;
 
 export const selectCurrent = (state) => state.songs.current;
 export const selectSongs = (state) => state.songs.data;
