@@ -6,7 +6,7 @@ import {
     faVolumeLow,
 } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import React, { useRef, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { back, forward, selectCurrent } from '../Store/SongsSlice';
 
@@ -21,6 +21,10 @@ function Player() {
     const [timeData, setTimeData] = useState({ current: 0, end: 0 });
     const [showVolumeSlider, setShowVolumeSlider] = useState(false);
 
+    useEffect(() => {
+        if (isPlaying) audioRef.current.play();
+    }, [currentSong]);
+
     const handlePlay = async () => {
         if (!isPlaying) {
             await audioRef.current.play();
@@ -28,14 +32,6 @@ function Player() {
             await audioRef.current.pause();
         }
         setIsPlaying(!isPlaying);
-    };
-
-    const handleSkip = async (action) => {
-        await dispatch(action());
-
-        if (isPlaying) {
-            await audioRef.current.play();
-        }
     };
 
     return (
@@ -55,17 +51,20 @@ function Player() {
                         current: e.target.currentTime,
                     })
                 }
-                onEnded={(e) => handleSkip(forward)}
+                onEnded={async () => dispatch(forward())}
             />
             <div className='timeControl'>
                 <p className='timeStart'>0:00</p>
                 <input
                     type='range'
+                    step='0.01'
                     min={0}
                     max={timeData.end}
                     value={timeData.current}
                     className='timeSlider'
-                    onClick={(e) => console.log(e)}
+                    onChange={(e) => {
+                        audioRef.current.currentTime = e.target.value;
+                    }}
                     style={{
                         background: `linear-gradient(to right, ${currentSong.color[0]},${currentSong.color[1]})`,
                     }}
@@ -74,7 +73,7 @@ function Player() {
             </div>
             <div className='playControl'>
                 <FontAwesomeIcon
-                    onClick={() => handleSkip(back)}
+                    onClick={async () => await dispatch(back())}
                     className='skipBack'
                     icon={faAngleLeft}
                 />
@@ -84,7 +83,7 @@ function Player() {
                     onClick={handlePlay}
                 />
                 <FontAwesomeIcon
-                    onClick={() => handleSkip(forward)}
+                    onClick={async () => await dispatch(forward())}
                     className='skipForward'
                     icon={faAngleRight}
                 />
@@ -96,10 +95,14 @@ function Player() {
                 <input
                     type='range'
                     min='1'
-                    max='100'
+                    // max='100'
                     value='50'
                     className='volumeSlider'
                     style={{ display: showVolumeSlider ? 'block' : 'none' }}
+                    onChange={(e) => {
+                        console.log(audioRef);
+                        //audioRef.current.volume = e.target.value / 100;
+                    }}
                 />
             </div>
         </div>
