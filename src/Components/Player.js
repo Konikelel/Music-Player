@@ -19,6 +19,7 @@ function Player() {
     const currentSong = useSelector(selectCurrent);
     const [isPlaying, setIsPlaying] = useState(false);
     const [timeData, setTimeData] = useState({ current: 0, end: 0 });
+    const [volume, setVolume] = useState(0.5);
     const [showVolumeSlider, setShowVolumeSlider] = useState(false);
 
     useEffect(() => {
@@ -94,14 +95,15 @@ function Player() {
                 />
                 <input
                     type='range'
-                    min='1'
-                    // max='100'
-                    value='50'
+                    min='0'
+                    max='1'
+                    step='0.01'
+                    value={volume}
                     className='volumeSlider'
                     style={{ display: showVolumeSlider ? 'block' : 'none' }}
                     onChange={(e) => {
-                        console.log(audioRef);
-                        //audioRef.current.volume = e.target.value / 100;
+                        setVolume(e.target.value);
+                        audioRef.current.volume = e.target.value;
                     }}
                 />
             </div>
