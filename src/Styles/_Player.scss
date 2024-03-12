@@ -21,7 +21,6 @@
             background: grey;
             cursor: pointer;
             outline: none;
-            border: 0.05rem solid gray;
         }
 
         input[type='range']::-webkit-slider-thumb {
@@ -30,7 +29,6 @@
             width: 1rem;
             border-radius: 50%;
             background: black;
-            border: 0.05rem solid white;
         }
 
         p {
