@@ -13,11 +13,10 @@ import { back, forward, selectCurrent } from '../Store/SongsSlice';
 const timeFormatter = (time) =>
     Math.floor(time / 60) + ':' + ('0' + Math.floor(time % 60)).slice(-2);
 
-function Player() {
+function Player({ isPlaying, setIsPlaying }) {
     const audioRef = useRef();
     const dispatch = useDispatch();
     const currentSong = useSelector(selectCurrent);
-    const [isPlaying, setIsPlaying] = useState(false);
     const [timeData, setTimeData] = useState({ current: 0, end: 0 });
     const [volume, setVolume] = useState(0.5);
     const [showVolumeSlider, setShowVolumeSlider] = useState(false);

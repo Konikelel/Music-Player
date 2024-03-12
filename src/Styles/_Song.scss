@@ -24,3 +24,17 @@
         font-weight: 400;
     }
 }
+
+@keyframes rotate {
+    from {
+        transform: rotate(0deg);
+    }
+
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+.rotate {
+    animation: rotate 30s linear forwards infinite;
+}

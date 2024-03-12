@@ -7,6 +7,8 @@ import './Styles/App.scss';
 
 function App() {
     const [showLibrary, setShowLibrary] = useState(false);
+    const [isPlaying, setIsPlaying] = useState(false);
+
     return (
         <div className='app'>
             <Library
@@ -14,8 +16,8 @@ function App() {
                 setShowLibrary={setShowLibrary}
             />
             <Nav showLibrary={showLibrary} setShowLibrary={setShowLibrary} />
-            <Song />
-            <Player />
+            <Song isPlaying={isPlaying} />
+            <Player isPlaying={isPlaying} setIsPlaying={setIsPlaying} />
         </div>
     );
 }
