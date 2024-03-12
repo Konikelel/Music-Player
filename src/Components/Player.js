@@ -28,15 +28,6 @@ function Player() {
         if (isPlaying) audioRef.current.play();
     }, [currentSong]);
 
-    const handlePlay = async () => {
-        if (!isPlaying) {
-            await audioRef.current.play();
-        } else {
-            await audioRef.current.pause();
-        }
-        dispatch(changeIsPlaying());
-    };
-
     return (
         <div className='player'>
             <audio
@@ -54,7 +45,7 @@ function Player() {
                         current: e.target.currentTime,
                     })
                 }
-                onEnded={async () => dispatch(forward())}
+                onEnded={() => dispatch(forward())}
             />
             <div className='timeControl'>
                 <p className='timeStart'>0:00</p>
@@ -76,17 +67,24 @@ function Player() {
             </div>
             <div className='playControl'>
                 <FontAwesomeIcon
-                    onClick={async () => await dispatch(back())}
+                    onClick={() => dispatch(back())}
                     className='skipBack'
                     icon={faAngleLeft}
                 />
                 <FontAwesomeIcon
                     className='play'
                     icon={isPlaying ? faPause : faPlay}
-                    onClick={handlePlay}
+                    onClick={() => {
+                        if (!isPlaying) {
+                            audioRef.current.play();
+                        } else {
+                            audioRef.current.pause();
+                        }
+                        dispatch(changeIsPlaying());
+                    }}
                 />
                 <FontAwesomeIcon
-                    onClick={async () => await dispatch(forward())}
+                    onClick={() => dispatch(forward())}
                     className='skipForward'
                     icon={faAngleRight}
                 />

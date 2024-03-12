@@ -7,9 +7,9 @@ import LibrarySong from './LibrarySong';
 
 function Library() {
     const showLibrary = useSelector(selectShowLibrary);
+    const currentSong = useSelector(selectCurrent);
     const dispatch = useDispatch();
 
-    const currentSong = useSelector(selectCurrent);
     return (
         <div
             className='library'
@@ -19,6 +19,7 @@ function Library() {
             <div className='playlist'>
                 {data().map((song, index) => (
                     <LibrarySong
+                        key={index}
                         index={index}
                         name={song.name}
                         cover={song.cover}
