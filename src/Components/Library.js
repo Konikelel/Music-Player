@@ -1,16 +1,20 @@
 import React from 'react';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import data from '../Data';
+import { changeShowLibrary, selectShowLibrary } from '../Store/ControlsSlice';
 import { selectCurrent } from '../Store/SongsSlice';
 import LibrarySong from './LibrarySong';
 
-function Library({ showLibrary, setShowLibrary }) {
+function Library() {
+    const showLibrary = useSelector(selectShowLibrary);
+    const dispatch = useDispatch();
+
     const currentSong = useSelector(selectCurrent);
     return (
         <div
             className='library'
             style={{ display: showLibrary ? 'block' : 'none' }}
-            onClick={() => setShowLibrary(!showLibrary)}
+            onClick={() => dispatch(changeShowLibrary())}
         >
             <div className='playlist'>
                 {data().map((song, index) => (

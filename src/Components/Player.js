@@ -8,15 +8,18 @@ import {
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import React, { useEffect, useRef, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import { changeIsPlaying, selectIsPlaying } from '../Store/ControlsSlice';
 import { back, forward, selectCurrent } from '../Store/SongsSlice';
 
 const timeFormatter = (time) =>
     Math.floor(time / 60) + ':' + ('0' + Math.floor(time % 60)).slice(-2);
 
-function Player({ isPlaying, setIsPlaying }) {
+function Player() {
     const audioRef = useRef();
     const dispatch = useDispatch();
+    const isPlaying = useSelector(selectIsPlaying);
     const currentSong = useSelector(selectCurrent);
+
     const [timeData, setTimeData] = useState({ current: 0, end: 0 });
     const [volume, setVolume] = useState(0.5);
     const [showVolumeSlider, setShowVolumeSlider] = useState(false);
@@ -31,7 +34,7 @@ function Player({ isPlaying, setIsPlaying }) {
         } else {
             await audioRef.current.pause();
         }
-        setIsPlaying(!isPlaying);
+        dispatch(changeIsPlaying());
     };
 
     return (

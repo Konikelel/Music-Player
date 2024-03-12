@@ -1,9 +1,11 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
+import { selectIsPlaying } from '../Store/ControlsSlice';
 import { selectCurrent } from '../Store/SongsSlice';
 
-function Song({ isPlaying }) {
+function Song() {
     const current = useSelector(selectCurrent);
+    const isPlaying = useSelector(selectIsPlaying);
 
     return (
         <div className='song'>

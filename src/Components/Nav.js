@@ -1,15 +1,19 @@
 import { faMusic } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import React from 'react';
+import { useDispatch } from 'react-redux';
+import { changeShowLibrary } from '../Store/ControlsSlice';
 
-function Nav({ showLibrary, setShowLibrary }) {
+function Nav() {
+    const dispatch = useDispatch();
+
     return (
         <div className='nav'>
             <nav>
                 <h1 className='title'>Waves</h1>
                 <button
                     className='button'
-                    onClick={() => setShowLibrary(!showLibrary)}
+                    onClick={() => dispatch(changeShowLibrary())}
                 >
                     <div className='buttonContainer'>
                         <p>Library</p>
