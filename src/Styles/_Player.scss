@@ -1,7 +1,7 @@
 .player {
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
+    justify-content: space-evenly;
     align-items: center;
     min-height: 20vh;
     margin: auto;
@@ -57,10 +57,11 @@
         justify-content: space-between;
         align-items: center;
         width: 80%;
+        flex-wrap: wrap;
 
         .inputContainer {
             position: relative;
-            width: 8rem;
+            flex-basis: 8rem;
 
             input[type='range'] {
                 appearance: none;
@@ -110,5 +111,30 @@
     .svg-inline--fa {
         padding: 1rem;
         cursor: pointer;
+    }
+}
+
+@media screen and (max-width: 1250px) {
+    .player {
+        width: 60%;
+    }
+}
+
+@media screen and (max-width: 1000px) {
+    .player {
+        width: 70%;
+    }
+}
+
+@media screen and (max-width: 700px) {
+    .player {
+        width: 90%;
+        min-height: 30vh;
+    }
+}
+
+@media screen and (max-width: 473px) {
+    .playControl > .inputContainer {
+        flex: 1 1 8rem;
     }
 }
