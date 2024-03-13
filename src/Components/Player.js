@@ -16,13 +16,15 @@ const timeFormatter = (time) =>
 
 function Player() {
     const audioRef = useRef();
+    const sliderVolumeFillRef = useRef();
+    const sliderSongFillRef = useRef();
     const dispatch = useDispatch();
     const isPlaying = useSelector(selectIsPlaying);
     const currentSong = useSelector(selectCurrent);
 
-    const [timeData, setTimeData] = useState({ current: 0, end: 0 });
     const [volume, setVolume] = useState(0.5);
     const [showVolumeSlider, setShowVolumeSlider] = useState(false);
+    const [timeData, setTimeData] = useState({ current: 0, end: 0 });
 
     useEffect(() => {
         if (isPlaying) audioRef.current.play();
@@ -33,36 +35,40 @@ function Player() {
             <audio
                 ref={audioRef}
                 src={currentSong.audio}
-                onLoadedMetadata={(e) =>
-                    setTimeData({
-                        current: e.target.currentTime,
-                        end: e.target.duration,
-                    })
-                }
-                onTimeUpdate={(e) =>
+                onLoadedMetadata={(e) => {
+                    sliderSongFillRef.current.style.width = `100%`;
+                }}
+                onTimeUpdate={(e) => {
                     setTimeData({
                         ...timeData,
                         current: e.target.currentTime,
-                    })
-                }
+                    });
+                    sliderSongFillRef.current.style.width = `${
+                        (1 - e.target.currentTime / timeData.end) * 100
+                    }%`;
+                }}
                 onEnded={() => dispatch(forward())}
             />
             <div className='timeControl'>
-                <p className='timeStart'>0:00</p>
-                <input
-                    type='range'
-                    step='0.01'
-                    min={0}
-                    max={timeData.end}
-                    value={timeData.current}
-                    className='timeSlider'
-                    onChange={(e) => {
-                        audioRef.current.currentTime = e.target.value;
-                    }}
-                    style={{
-                        background: `linear-gradient(to right, ${currentSong.color[0]},${currentSong.color[1]})`,
-                    }}
-                />
+                <p className='timeStart'>{timeFormatter(timeData.current)}</p>
+                <div className='inputContainer'>
+                    <input
+                        type='range'
+                        step='0.01'
+                        min={0}
+                        max={timeData.end}
+                        value={timeData.current}
+                        className='timeSlider'
+                        onChange={(e) => {
+                            audioRef.current.currentTime = e.target.value;
+                        }}
+                        style={{
+                            background: `linear-gradient(to right, ${currentSong.color[0]},${currentSong.color[1]})`,
+                        }}
+                    />
+                    <div className='fill' ref={sliderSongFillRef} />
+                </div>
+
                 <p className='timeEnd'>{timeFormatter(timeData.end)}</p>
             </div>
             <div className='playControl'>
@@ -93,19 +99,28 @@ function Player() {
                     className='volume'
                     icon={faVolumeLow}
                 />
-                <input
-                    type='range'
-                    min='0'
-                    max='1'
-                    step='0.01'
-                    value={volume}
-                    className='volumeSlider'
+                <div
+                    className='inputContainer'
                     style={{ display: showVolumeSlider ? 'block' : 'none' }}
-                    onChange={(e) => {
-                        setVolume(e.target.value);
-                        audioRef.current.volume = e.target.value;
-                    }}
-                />
+                >
+                    <input
+                        type='range'
+                        min='0'
+                        max='1'
+                        step='0.01'
+                        value={volume}
+                        className='volumeSlider'
+                        onChange={(e) => {
+                            const volume = e.target.value;
+                            setVolume(volume);
+                            audioRef.current.volume = volume;
+                            sliderVolumeFillRef.current.style.width = `${
+                                volume * 100
+                            }%`;
+                        }}
+                    />
+                    <div className='fill' ref={sliderVolumeFillRef} />
+                </div>
             </div>
         </div>
     );
