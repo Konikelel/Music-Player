@@ -36,7 +36,11 @@ function Player() {
                 ref={audioRef}
                 src={currentSong.audio}
                 onLoadedMetadata={(e) => {
-                    sliderSongFillRef.current.style.width = `100%`;
+                    setTimeData({
+                        end: e.target.duration,
+                        current: e.target.currentTime,
+                    });
+                    sliderSongFillRef.current.style.width = '100%';
                 }}
                 onTimeUpdate={(e) => {
                     setTimeData({
