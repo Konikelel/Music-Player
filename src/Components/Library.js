@@ -16,6 +16,12 @@ function Library() {
             style={{ display: showLibrary ? 'block' : 'none' }}
             onClick={() => dispatch(changeShowLibrary())}
         >
+            <div className='hamburgerMenu'>
+                <div className='lineContainer'>
+                    <div className='lineRight' />
+                    <div className='lineLeft' />
+                </div>
+            </div>
             <div className='playlist'>
                 {data().map((song, index) => (
                     <LibrarySong
