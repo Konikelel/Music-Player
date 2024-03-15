@@ -4,6 +4,7 @@
     width: 100%;
     background: rgba(255, 255, 255, 0.4);
     z-index: 100;
+    transition: opacity 0.75s ease-in-out;
 
     overflow-y: scroll;
     scrollbar-width: thin;
@@ -23,6 +24,7 @@
                 width: 2.5rem;
                 height: 0.3rem;
                 background: rgb(218, 218, 218);
+                border-radius: 1rem;
             }
 
             .lineLeft {
@@ -64,6 +66,15 @@
             }
         }
     }
+}
+
+.show {
+    opacity: 1;
+}
+
+.hide {
+    opacity: 0;
+    pointer-events: none;
 }
 
 @media screen and (min-width: 1000px) {

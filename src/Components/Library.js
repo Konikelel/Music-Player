@@ -12,8 +12,7 @@ function Library() {
 
     return (
         <div
-            className='library'
-            style={{ display: showLibrary ? 'block' : 'none' }}
+            className={`library ${showLibrary ? 'show' : 'hide'}`}
             onClick={() => dispatch(changeShowLibrary())}
         >
             <div className='hamburgerMenu'>
