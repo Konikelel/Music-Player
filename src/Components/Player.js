@@ -28,6 +28,7 @@ function Player() {
 
     useEffect(() => {
         if (isPlaying) audioRef.current.play();
+        // eslint-disable-next-line
     }, [currentSong]);
 
     return (
